@@ -67,11 +67,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 5
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -115,8 +115,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 49, y: 0.0000019073}
-  m_SizeDelta: {x: 63.6404, y: 53.8309}
+  m_AnchoredPosition: {x: 116, y: 10.652187}
+  m_SizeDelta: {x: 175.15, y: 143.7001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3469544486401901518
 CanvasRenderer:
@@ -236,8 +236,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 170, y: -1.0362}
-  m_SizeDelta: {x: 61.5682, y: 51.7586}
+  m_AnchoredPosition: {x: 290, y: 10.652187}
+  m_SizeDelta: {x: 100.248, y: 113.0191}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2745194488182282802
 CanvasRenderer:
@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 1036204577000434688}
   - component: {fileID: 4184063207437741097}
   - component: {fileID: 6514297395013949356}
+  - component: {fileID: 1982972470609009997}
   m_Layer: 5
   m_Name: ObjectConfigItem
   m_TagString: Untagged
@@ -357,11 +358,11 @@ RectTransform:
   - {fileID: 4836884628033366403}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -700, y: -300}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 128.72632, y: -829.4907}
+  m_SizeDelta: {x: 778.4126, y: 261.0186}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1036204577000434688
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -416,6 +417,26 @@ MonoBehaviour:
   shapeButton: {fileID: 5483441803508161530}
   textureButton: {fileID: 8626563807932220509}
   previewImage: {fileID: 8543323364725081193}
+--- !u!114 &1982972470609009997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3447639048899323114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: 350
+  m_PreferredHeight: 249
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &6655661733831552470
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,11 +504,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 5
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -531,8 +552,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -144, y: -1.0362}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -125, y: 6}
+  m_SizeDelta: {x: 220.1429, y: 165.0774}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7721736850112335272
 CanvasRenderer:

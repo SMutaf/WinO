@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObjectSetupController : MonoBehaviour
 {
@@ -14,5 +16,29 @@ public class ObjectSetupController : MonoBehaviour
 
         ObjectConfigItemView newItem = Instantiate(objectConfigItemPrefab, objectListContainer);
         newItem.Initialize(objectCount);
+    }
+
+    public void ContinueToRace()
+    {
+        if (RaceSetupSession.Instance == null)
+        {
+            Debug.LogError("RaceSetupSession instance not found.");
+            return;
+        }
+
+        List<RaceObjectConfig> configs = new();
+
+        foreach (Transform child in objectListContainer)
+        {
+            ObjectConfigItemView itemView = child.GetComponent<ObjectConfigItemView>();
+
+            if (itemView != null)
+            {
+                configs.Add(itemView.GetConfig());
+            }
+        }
+
+        RaceSetupSession.Instance.SetObjects(configs);
+        SceneManager.LoadScene("Race");
     }
 }

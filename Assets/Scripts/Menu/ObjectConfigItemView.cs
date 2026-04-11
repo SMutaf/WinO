@@ -10,9 +10,7 @@ public class ObjectConfigItemView : MonoBehaviour
     [SerializeField] private Image previewImage;
 
     private int objectIndex;
-
-    private string currentShape = "Sphere";
-    private Color currentColor = Color.white;
+    private RaceObjectConfig config = new RaceObjectConfig();
 
     public void Initialize(int index)
     {
@@ -21,30 +19,45 @@ public class ObjectConfigItemView : MonoBehaviour
         if (labelText != null)
             labelText.text = $"Object {objectIndex}";
 
-        shapeButton.onClick.RemoveAllListeners();
-        shapeButton.onClick.AddListener(OnShapeClicked);
+        if (shapeButton != null)
+        {
+            shapeButton.onClick.RemoveAllListeners();
+            shapeButton.onClick.AddListener(OnShapeClicked);
+        }
 
-        textureButton.onClick.RemoveAllListeners();
-        textureButton.onClick.AddListener(OnTextureClicked);
+        if (textureButton != null)
+        {
+            textureButton.onClick.RemoveAllListeners();
+            textureButton.onClick.AddListener(OnTextureClicked);
+        }
 
         UpdatePreview();
+        UpdateButtonTexts();
+    }
+
+    public RaceObjectConfig GetConfig()
+    {
+        return new RaceObjectConfig
+        {
+            shape = config.shape,
+            color = config.color
+        };
     }
 
     private void OnShapeClicked()
     {
-        // Basit toggle
-        currentShape = currentShape == "Sphere" ? "Cube" : "Sphere";
+        config.shape = config.shape == ShapeType.Circle
+            ? ShapeType.Square
+            : ShapeType.Circle;
 
-        Debug.Log($"Object {objectIndex} Shape: {currentShape}");
+        Debug.Log($"Object {objectIndex} Shape: {config.shape}");
+        UpdateButtonTexts();
     }
 
     private void OnTextureClicked()
     {
-        // Renk deðiþtir (þimdilik texture yerine)
-        currentColor = new Color(Random.value, Random.value, Random.value);
-
+        config.color = new Color(Random.value, Random.value, Random.value);
         Debug.Log($"Object {objectIndex} Color Changed");
-
         UpdatePreview();
     }
 
@@ -52,7 +65,17 @@ public class ObjectConfigItemView : MonoBehaviour
     {
         if (previewImage != null)
         {
-            previewImage.color = currentColor;
+            previewImage.color = config.color;
+        }
+    }
+
+    private void UpdateButtonTexts()
+    {
+        Text shapeText = shapeButton != null ? shapeButton.GetComponentInChildren<Text>() : null;
+
+        if (shapeText != null)
+        {
+            shapeText.text = config.shape.ToString();
         }
     }
 }
