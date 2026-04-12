@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RaceSceneSpawner : MonoBehaviour
@@ -12,6 +13,8 @@ public class RaceSceneSpawner : MonoBehaviour
     [Header("Spawn Settings")]
     [SerializeField] private float horizontalSpread = 1.5f;
     [SerializeField] private float verticalSpacing = 0.8f;
+
+    public List<Transform> SpawnedObjects { get; } = new();
 
     private void Start()
     {
@@ -55,6 +58,8 @@ public class RaceSceneSpawner : MonoBehaviour
             {
                 spriteRenderer.color = config.color;
             }
+
+            SpawnedObjects.Add(spawned.transform);
         }
     }
 }

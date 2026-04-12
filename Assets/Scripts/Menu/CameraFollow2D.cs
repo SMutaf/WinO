@@ -4,7 +4,7 @@ using UnityEngine;
 public class CameraFollow2D : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private RaceTestSpawner raceTestSpawner;
+    [SerializeField] private RaceSceneSpawner raceSceneSpawner;
 
     [Header("Follow Settings")]
     [SerializeField] private float smoothSpeed = 4f;
@@ -20,10 +20,10 @@ public class CameraFollow2D : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (raceTestSpawner == null || raceTestSpawner.SpawnedObjects.Count == 0)
+        if (raceSceneSpawner == null || raceSceneSpawner.SpawnedObjects.Count == 0)
             return;
 
-        Transform leader = GetLowestObject(raceTestSpawner.SpawnedObjects);
+        Transform leader = GetLowestObject(raceSceneSpawner.SpawnedObjects);
 
         if (leader == null)
             return;

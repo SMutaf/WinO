@@ -6,6 +6,7 @@ public class RaceSetupSession : MonoBehaviour
     public static RaceSetupSession Instance { get; private set; }
 
     public List<RaceObjectConfig> SelectedObjects { get; private set; } = new();
+    public LevelData SelectedLevel { get; private set; }
 
     private void Awake()
     {
@@ -25,8 +26,14 @@ public class RaceSetupSession : MonoBehaviour
         SelectedObjects.AddRange(objects);
     }
 
+    public void SetLevel(LevelData levelData)
+    {
+        SelectedLevel = levelData;
+    }
+
     public void Clear()
     {
         SelectedObjects.Clear();
+        SelectedLevel = null;
     }
 }
