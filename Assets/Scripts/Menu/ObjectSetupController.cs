@@ -8,6 +8,10 @@ public class ObjectSetupController : MonoBehaviour
     [SerializeField] private Transform objectListContainer;
     [SerializeField] private ObjectConfigItemView objectConfigItemPrefab;
 
+    [Header("Popups")]
+    [SerializeField] private ShapeSelectionPopup shapeSelectionPopup;
+    [SerializeField] private TextureSelectionPopup textureSelectionPopup;
+
     private int objectCount = 0;
 
     public void AddObjectConfigItem()
@@ -15,7 +19,23 @@ public class ObjectSetupController : MonoBehaviour
         objectCount++;
 
         ObjectConfigItemView newItem = Instantiate(objectConfigItemPrefab, objectListContainer);
-        newItem.Initialize(objectCount);
+        newItem.Initialize(objectCount, this);
+    }
+
+    public void OpenShapePopup(ObjectConfigItemView targetItem)
+    {
+        if (shapeSelectionPopup != null)
+        {
+            shapeSelectionPopup.Open(targetItem);
+        }
+    }
+
+    public void OpenTexturePopup(ObjectConfigItemView targetItem)
+    {
+        if (textureSelectionPopup != null)
+        {
+            textureSelectionPopup.Open(targetItem);
+        }
     }
 
     public void ContinueToRace()

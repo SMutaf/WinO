@@ -11,10 +11,12 @@ public class ObjectConfigItemView : MonoBehaviour
 
     private int objectIndex;
     private RaceObjectConfig config = new RaceObjectConfig();
+    private ObjectSetupController objectSetupController;
 
-    public void Initialize(int index)
+    public void Initialize(int index, ObjectSetupController controller)
     {
         objectIndex = index;
+        objectSetupController = controller;
 
         if (labelText != null)
             labelText.text = $"Object {objectIndex}";
@@ -31,8 +33,7 @@ public class ObjectConfigItemView : MonoBehaviour
             textureButton.onClick.AddListener(OnTextureClicked);
         }
 
-        UpdatePreview();
-        UpdateButtonTexts();
+        RefreshUI();
     }
 
     public RaceObjectConfig GetConfig()
@@ -44,38 +45,48 @@ public class ObjectConfigItemView : MonoBehaviour
         };
     }
 
+    public void SetShape(ShapeType shapeType)
+    {
+        config.shape = shapeType;
+        RefreshUI();
+    }
+
+    public void SetColor(Color color)
+    {
+        config.color = color;
+        RefreshUI();
+    }
+
     private void OnShapeClicked()
     {
-        config.shape = config.shape == ShapeType.Circle
-            ? ShapeType.Square
-            : ShapeType.Circle;
-
-        Debug.Log($"Object {objectIndex} Shape: {config.shape}");
-        UpdateButtonTexts();
+        if (objectSetupController != null)
+        {
+            objectSetupController.OpenShapePopup(this);
+        }
     }
 
     private void OnTextureClicked()
     {
-        config.color = new Color(Random.value, Random.value, Random.value);
-        Debug.Log($"Object {objectIndex} Color Changed");
-        UpdatePreview();
+        if (objectSetupController != null)
+        {
+            objectSetupController.OpenTexturePopup(this);
+        }
     }
 
-    private void UpdatePreview()
+    private void RefreshUI()
     {
         if (previewImage != null)
         {
             previewImage.color = config.color;
         }
-    }
 
-    private void UpdateButtonTexts()
-    {
-        Text shapeText = shapeButton != null ? shapeButton.GetComponentInChildren<Text>() : null;
-
-        if (shapeText != null)
+        if (shapeButton != null)
         {
-            shapeText.text = config.shape.ToString();
+            Text shapeText = shapeButton.GetComponentInChildren<Text>();
+            if (shapeText != null)
+            {
+                shapeText.text = config.shape.ToString();
+            }
         }
     }
 }
